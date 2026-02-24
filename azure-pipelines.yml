@@ -12,10 +12,10 @@ steps:
       curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
     displayName: 'Install Databricks CLI'
   - script: |
-      databricks bundle validate --target Test --profile spn-authentication
+      databricks bundle validate --target Test --profile QAspn-authentication
     displayName: 'Validate Bundle'
     workingDirectory: $(Build.SourcesDirectory)/superstore/DABDemo
   - script: |
-      databricks bundle deploy --target Test --profile spn-authentication
+      databricks bundle deploy --target Test --profile QAspn-authentication
     displayName: 'Deploy Bundle to Test'
     workingDirectory: $(Build.SourcesDirectory)/superstore/DABDemo
