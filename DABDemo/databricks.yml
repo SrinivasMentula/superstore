@@ -13,10 +13,10 @@ targets:
     mode: development
     default: true
     workspace:
-      host: https://adb-7405604863496975.15.azuredatabricks.net
+      host: ${env:DEV_HOSTID}
 
   # The 'test' target, used for  wa deployment.
   Test:
     mode: production
     workspace:
-      host: https://adb-7405611586523742.2.azuredatabricks.net
+      host:${env:TEST_HOSTID}
