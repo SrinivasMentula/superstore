@@ -1,0 +1,22 @@
+# Databricks Asset Bundle configuration, more info here: https://docs.databricks.com/en/dev-tools/bundles/settings.html
+bundle:
+  name: "DABDemo"
+
+include:
+  - resources/Jobs/*.yml
+  - variables.yml
+  - dev.yml
+targets:
+  # The 'dev' target, for development purposes. This target is the default.
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://adb-7405604863496975.15.azuredatabricks.net
+
+  # The 'test' target, used for  wa deployment.
+  Test:
+    mode: production
+    workspace:
+      host: https://adb-7405614310278699.19.azuredatabricks.net
+    

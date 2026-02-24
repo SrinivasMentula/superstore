@@ -1,0 +1,26 @@
+resources:
+  jobs:
+    TestJobCreation:
+      name: TestJobCreation
+      tasks:
+        - task_key: DemoJob
+          notebook_task:
+            notebook_path: /Workspace/Users/srinivasazurelearningmentula@gmail.com/superstor/DABDemo/resources/Notebooks/testNotebook
+            source: WORKSPACE
+          job_cluster_key: DemoJob_cluster
+      job_clusters:
+        - job_cluster_key: DemoJob_cluster
+          new_cluster:
+            spark_version: 17.3.x-scala2.13
+            azure_attributes:
+              availability: SPOT_WITH_FALLBACK_AZURE
+            node_type_id: Standard_D4ds_v4
+            spark_env_vars:
+              PYSPARK_PYTHON: /databricks/python3/bin/python3
+            data_security_mode: DATA_SECURITY_MODE_DEDICATED
+            runtime_engine: PHOTON
+            kind: CLASSIC_PREVIEW
+            is_single_node: false
+            num_workers: ${var.num_workers}
+      queue:
+        enabled: true

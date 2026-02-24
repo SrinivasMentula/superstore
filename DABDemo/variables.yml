@@ -1,0 +1,4 @@
+variables:
+  num_workers:
+    description: "Number of workers for the cluster"
+    default: 4

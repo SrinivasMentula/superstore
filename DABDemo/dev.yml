@@ -1,0 +1,4 @@
+targets:
+  dev:
+    variables:
+      num_workers: 3
