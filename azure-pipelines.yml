@@ -1,21 +1,22 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
 trigger: none
 
 pool:
   name: Default
+
 steps:
-  # Step 1 - Install Databricks CLI
-  - script: |
-       winget install Databricks.DatabricksCLI -e --silent
-    displayName: 'Install Databricks CLI'
-  - script: |
+  # Step 1 - Verify Databricks CLI is available
+  - pwsh: |
+      databricks --version
+    displayName: 'Check Databricks CLI Version'
+
+  # Step 2 - Validate the bundle
+  - pwsh: |
       databricks bundle validate --target Test --profile QAspn-authentication
     displayName: 'Validate Bundle'
     workingDirectory: $(Build.SourcesDirectory)/superstore/DABDemo
-  - script: |
+
+  # Step 3 - Deploy the bundle to Test workspace
+  - pwsh: |
       databricks bundle deploy --target Test --profile QAspn-authentication
     displayName: 'Deploy Bundle to Test'
     workingDirectory: $(Build.SourcesDirectory)/superstore/DABDemo
