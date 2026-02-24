@@ -6,7 +6,6 @@ trigger: none
 
 pool:
   name: Default
-
 steps:
   # Step 1 - Install Databricks CLI
   - script: |
