@@ -8,5 +8,15 @@ pool:
   name: Default
 
 steps:
-  - script: echo Pipeline is reading from GitHub and running on my local machine!
-    displayName: 'Test Local Agent'
+  # Step 1 - Install Databricks CLI
+  - script: |
+      curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
+    displayName: 'Install Databricks CLI'
+  - script: |
+      databricks bundle validate --target Test --profile spn-authentication
+    displayName: 'Validate Bundle'
+    workingDirectory: $(Build.SourcesDirectory)/superstore/DABDemo
+  - script: |
+      databricks bundle deploy --target Test --profile spn-authentication
+    displayName: 'Deploy Bundle to Test'
+    workingDirectory: $(Build.SourcesDirectory)/superstore/DABDemo
