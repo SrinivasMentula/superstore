@@ -9,7 +9,7 @@ pool:
 steps:
   # Step 1 - Install Databricks CLI
   - script: |
-      curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
+       winget install Databricks.DatabricksCLI -e --silent
     displayName: 'Install Databricks CLI'
   - script: |
       databricks bundle validate --target Test --profile QAspn-authentication
