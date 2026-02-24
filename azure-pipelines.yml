@@ -21,7 +21,7 @@ steps:
 
   # Step 2 - Validate the bundle
   - task: PowerShell@2
-    displayName: 'Validating the Bundle file'
+    displayName: 'Validating budle file'
     inputs:
       targetType: 'inline'
       script: |
