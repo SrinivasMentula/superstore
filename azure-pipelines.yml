@@ -5,18 +5,27 @@ pool:
 
 steps:
   # Step 1 - Verify Databricks CLI is available
-  - pwsh: |
-      databricks --version
+  - task: PowerShell@2
     displayName: 'Check Databricks CLI Version'
+    inputs:
+      targetType: 'inline'
+      script: |
+        databricks --version
 
   # Step 2 - Validate the bundle
-  - pwsh: |
-      databricks bundle validate --target Test --profile QAspn-authentication
+  - task: PowerShell@2
     displayName: 'Validate Bundle'
-    workingDirectory: $(Build.SourcesDirectory)/superstore/DABDemo
+    inputs:
+      targetType: 'inline'
+      script: |
+        databricks bundle validate --target Test --profile QAspn-authentication
+      workingDirectory: $(Build.SourcesDirectory)/superstore/DABDemo
 
   # Step 3 - Deploy the bundle to Test workspace
-  - pwsh: |
-      databricks bundle deploy --target Test --profile QAspn-authentication
+  - task: PowerShell@2
     displayName: 'Deploy Bundle to Test'
-    workingDirectory: $(Build.SourcesDirectory)/superstore/DABDemo
+    inputs:
+      targetType: 'inline'
+      script: |
+        databricks bundle deploy --target Test --profile QAspn-authentication
+      workingDirectory: $(Build.SourcesDirectory)/superstore/DABDemo
