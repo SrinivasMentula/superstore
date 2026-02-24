@@ -11,6 +11,13 @@ steps:
       targetType: 'inline'
       script: |
         databricks --version
+  # validating the file structure
+  - task: PowerShell@2
+    displayName: 'Check Repo Structure'
+    inputs:
+      targetType: 'inline'
+      script: |
+        Get-ChildItem -Recurse $(Build.SourcesDirectory) | Select-Object FullName
 
   # Step 2 - Validate the bundle
   - task: PowerShell@2
