@@ -11,7 +11,7 @@ steps:
       targetType: 'inline'
       script: |
         databricks --version
-  # validating the file structure
+  # validating the file 
   - task: PowerShell@2
     displayName: 'Check Repo Structure'
     inputs:
@@ -26,7 +26,7 @@ steps:
       targetType: 'inline'
       script: |
         databricks bundle validate --target Test --profile QAspn-authentication
-      workingDirectory: $(Build.SourcesDirectory)/superstore/DABDemo
+      workingDirectory: $(Build.SourcesDirectory)/DABDemo
 
   # Step 3 - Deploy the bundle to Test workspace
   - task: PowerShell@2
@@ -35,4 +35,4 @@ steps:
       targetType: 'inline'
       script: |
         databricks bundle deploy --target Test --profile QAspn-authentication
-      workingDirectory: $(Build.SourcesDirectory)/superstore/DABDemo
+      workingDirectory: $(Build.SourcesDirectory)/DABDemo
