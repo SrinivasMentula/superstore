@@ -6,6 +6,7 @@ include:
   - resources/Jobs/*.yml
   - variables.yml
   - dev.yml
+  - Test.Yml
 targets:
   # The 'dev' target, for development purposes. This target is the default.
   dev:
