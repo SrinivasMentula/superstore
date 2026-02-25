@@ -6,11 +6,11 @@ from pyspark.sql.functions import user
 
 # COMMAND ----------
 
-# MAGIC %run /Workspace/Users/sarathazurelearning@gmail.com/superstore/Common/LoggingTableCreation
+# MAGIC %run ../Common/LoggingTableCreation
 
 # COMMAND ----------
 
-# MAGIC %run /Workspace/Users/sarathazurelearning@gmail.com/superstore/Common/logging
+# MAGIC %run ../Common/logging
 
 # COMMAND ----------
 

@@ -5,11 +5,11 @@ from pyspark.sql.window import Window
 
 # COMMAND ----------
 
-# MAGIC %run /Workspace/Users/sarathazurelearning@gmail.com/superstore/Common/logging
+# MAGIC %run ../Common/logging
 
 # COMMAND ----------
 
-# MAGIC %run /Workspace/Users/sarathazurelearning@gmail.com/superstore/outbound/outboundTableCreation
+# MAGIC %run ./outboundTableCreation
 
 # COMMAND ----------
 
