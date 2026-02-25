@@ -1,6 +1,7 @@
 # Databricks notebook source
 from pyspark.sql.types import StringType,IntegerType, DoubleType , StructField, StructType, DecimalType, ArrayType
 from delta import DeltaTable
+from pyspark.sql.functions import user
 
 
 # COMMAND ----------
@@ -13,9 +14,13 @@ from delta import DeltaTable
 
 # COMMAND ----------
 
+NotebookName =( dbutils.notebook.entry_point.getDbutils().notebook().getContext().notebookPath().get().split("/")[-1])
+Error_message = ""
+user_name = spark.sql('select user').collect()[0][0]
+
+# COMMAND ----------
+
 try:
-  NotebookName =( dbutils.notebook.entry_point.getDbutils().notebook().getContext().notebookPath().get().split("/")[-1])
-  Error_message = ""
   spark.sql(
         """CREATE TABLE IF NOT EXISTS superstore.sales_reporting.sales_inbound
                   (
@@ -87,9 +92,18 @@ try:
     )
 
     # loading the data into the Bronzelayer
+    
     df_sales.write.mode('overwrite').saveAsTable('superstore.sales_reporting.sales_inbound')
+
+    dbutils.fs.mv('/Volumes/superstore/sales_reporting/inbound/inbound/SampleSuperstore.csv',
+                  '/Volumes/superstore/sales_reporting/inbound/inbound/Archive/'
+                  )
+    executionLog(NotebookName,"Success",user_name)
+
 except Exception as e:
+
     Error_message = str(e)
+    
     exceptionLogLoad(NotebookName, Error_message)
     raise
 

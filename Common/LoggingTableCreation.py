@@ -1,6 +1,6 @@
 # Databricks notebook source
 # MAGIC %sql 
-# MAGIC --creating the  required unity catlog and database  opeartions 
+# MAGIC --creating the  required unity catlog and database for  opeartions 
 # MAGIC create catalog if not exists superstore;
 # MAGIC create database if not exists superstore.sales_reporting;
 # MAGIC use catalog superstore;
