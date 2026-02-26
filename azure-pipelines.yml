@@ -1,0 +1,38 @@
+trigger: none
+
+pool:
+  name: Default
+
+steps:
+  # Step 1 - Verify Databricks CLI is available
+  - task: PowerShell@2
+    displayName: 'Check Databricks CLI Version'
+    inputs:
+      targetType: 'inline'
+      script: |
+        databricks --version
+  # validating the file 
+  - task: PowerShell@2
+    displayName: 'Check Repo Structure'
+    inputs:
+      targetType: 'inline'
+      script: |
+        Get-ChildItem -Recurse $(Build.SourcesDirectory) | Select-Object FullName
+
+  # Step 2 - Validate the bundle
+  - task: PowerShell@2
+    displayName: 'Validating budle file conflicting one'
+    inputs:
+      targetType: 'inline'
+      script: |
+        databricks bundle validate --target Test --profile QAspn-authentication
+      workingDirectory: $(Build.SourcesDirectory)/DABDemo
+
+  # Step 3 - Deploy the bundle to Test workspace
+  - task: PowerShell@2
+    displayName: 'Deploy Bundle to Test'
+    inputs:
+      targetType: 'inline'
+      script: |
+        databricks bundle deploy --target Test --profile QAspn-authentication
+      workingDirectory: $(Build.SourcesDirectory)/DABDemo

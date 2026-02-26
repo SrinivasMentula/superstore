@@ -1,0 +1,19 @@
+# Databricks Asset Bundle configuration, more info here: https://docs.databricks.com/en/dev-tools/bundles/settings.html
+bundle:
+  name: "superStore"
+
+include:
+  - resource/*/*.yml
+  - variables.yml
+
+targets:
+  # The 'dev' target, for development purposes. This target is the default.
+  dev:
+    mode: production
+    workspace:
+      host: https://adb-7405611586523742.2.azuredatabricks.net
+
+  # test:
+  #   mode: production
+  #   workspace:
+  #     host: https://adb-7405611586523742.2.azuredatabricks.net

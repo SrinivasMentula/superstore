@@ -1,0 +1,27 @@
+resources:
+  jobs:
+    InboundData:
+      name: InboundData
+      run_as:
+        service_principal_name: ${var.spn_name}
+      tasks:
+        - task_key: InboundDataLoad
+          
+          notebook_task:
+            notebook_path: ../Notebooks/Inbound/DataLoad.py
+            source: WORKSPACE
+        - task_key: StageLayer
+          depends_on:
+            - task_key: InboundDataLoad
+          notebook_task:
+            notebook_path: ../Notebooks/StageLayer/StageLayerConfiguration.py
+            source: WORKSPACE
+        - task_key: OutboundTask
+          depends_on:
+            - task_key: StageLayer
+          notebook_task:
+            notebook_path: ../Notebooks/outbound/outboundLayer.py
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
