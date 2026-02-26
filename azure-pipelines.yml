@@ -26,7 +26,7 @@ steps:
       targetType: 'inline'
       script: |
         databricks bundle validate --target Test --profile QA-SPN-authentication
-      workingDirectory: $(Build.SourcesDirectory)/DABDemo
+      workingDirectory: $(Build.SourcesDirectory)/resource
 
   # Step 3 - Deploy the bundle to Test workspace
   - task: PowerShell@2
@@ -35,4 +35,4 @@ steps:
       targetType: 'inline'
       script: |
         databricks bundle deploy --target Test --profile QA-SPN-authentication
-      workingDirectory: $(Build.SourcesDirectory)/DABDemo
+      workingDirectory: $(Build.SourcesDirectory)/resource
