@@ -1,7 +1,7 @@
 targets:
   Test:
     variables:
-      spn_name: QA-SPN-DATABRICKS-AUTH
+      spn_name: 63fd45d1-6c55-48d8-b915-7d611127e62b
     permissions:
       - user_name: srinivasazurelearningmentula_gmail.com#EXT#@srinivasazurelearningmentul.onmicrosoft.com
         level: CAN_MANAGE
