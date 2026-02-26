@@ -5,4 +5,4 @@ targets:
         value: QA-SPN-DATABRICKS-AUTH
     permissions:
       - user: srinivasazurelearningmentula_gmail.com#EXT#@srinivasazurelearningmentul.onmicrosoft.com
-        level: CAN_MANAGE
+        level: can_manage
