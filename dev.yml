@@ -1,0 +1,5 @@
+targets:
+  dev:
+    variables:
+      spn_name:
+        value: 6e27683d-a079-4f0c-a09f-15af995ecda7

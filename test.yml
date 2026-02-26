@@ -1,0 +1,9 @@
+targets:
+  test:
+    variables:
+      spn_name: QA-SPN-DATABRICKS-AUTH
+    permissions:
+      - user: srinivasazurelearningmentula_gmail.com#EXT#@srinivasazurelearningmentul.onmicrosoft.com
+        level: can_manage
+
+
