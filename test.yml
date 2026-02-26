@@ -5,5 +5,4 @@ targets:
     permissions:
       - user_name: srinivasazurelearningmentula_gmail.com#EXT#@srinivasazurelearningmentul.onmicrosoft.com
         level: CAN_MANAGE
-      - service_principal_name: 63fd45d1-6c55-48d8-b915-7d611127e62b
-        level: CAN_MANAGE
+     
